@@ -1,0 +1,142 @@
+﻿@model Advert
+@{
+    ViewData["Title"] = "CarDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="products">
+    <div class="container">
+        <div class="row">
+           
+               
+            <div class="col-md-6">
+
+                @*<div>
+                    <img src="@ViewBag.imageone" alt="" class="img-fluid wc-image">
+                </div>*@
+
+
+                <br>
+                <div class="row">
+                   
+                    @foreach (var item in Model.Images)
+        {
+
+            <div class="col-sm-4 col-6">
+                <div>
+                    <img src="~/img/@item.ImageName" alt="" class="img-fluid" style="width:200px!important; height:200px!important;">
+                </div>
+                <br>
+            </div>
+        }
+
+                </div>
+            </div>
+            
+
+            <div class="col-md-6">
+                <form action="#" method="post" class="form">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">İlan No</span>
+
+                                <strong class="pull-right">@Model.AdvertNo</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Şehir</span>
+
+                                <strong class="pull-right">@Model.City.Name</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left"> Durum</span>
+
+                                <strong class="pull-right">@Model.State.Name</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">İlan Tarihi</span>
+
+                                <strong class="pull-right">@Model.Date.ToShortDateString()</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Marka</span>
+
+                                <strong class="pull-right">@Model.Model.Brand.Name</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Model</span>
+
+                                <strong class="pull-right">@Model.Model.Name</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Km</span>
+
+                                <strong class="pull-right">@Model.Kilometer</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Yakıt Türü</span>
+
+                                <strong class="pull-right">@Model.FuelType</strong>
+                            </div>
+                        </li>
+
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Vites Türü</span>
+
+                                <strong class="pull-right">@Model.VitesType</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Açıklama</span>
+
+                                <strong class="pull-right">@Model.Description</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Fiyat</span>
+
+                                <strong class="pull-right">@Model.Price</strong>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <span class="pull-left">Telefon</span>
+
+                                <strong class="pull-right">@Model.Phone</strong>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

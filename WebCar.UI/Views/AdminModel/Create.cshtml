@@ -1,0 +1,28 @@
+﻿@model Model 
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="form-group">
+                    <form method="post" asp-action="Create">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        @Html.AntiForgeryToken()
+                        <label>Model Adı</label>
+                        <input type="text" asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <br />
+                        <label>Marka Adı</label>
+                        @Html.DropDownListFor(x => x.BrandId, (List<SelectListItem>)ViewBag.brand, "Seçiniz", new { @class = "form-control" })
+                        <button class="btn btn-primary">Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

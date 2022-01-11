@@ -1,0 +1,31 @@
+﻿@model List<Model>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered table table-striped">
+    <tr>
+        <th>Model Adı</th>
+        <th>Marka Adı</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Name</td>
+                <td>@item.Brand.Name</td>
+                <td><a asp-action="Update" asp-route-id="@item.ModelId" class="btn btn-warning">Güncelle</a></td>
+                <td>@Html.ActionLink("Sil", "Delete", new { id = item.ModelId }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor musunuz?')" })</td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Model Ekle</a>
+

@@ -1,0 +1,26 @@
+﻿@model State 
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="form-group">
+                    <form method="post" asp-action="Update">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        @Html.AntiForgeryToken()
+                        <label>Durum Adı</label>
+                        <input type="text" asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <br />
+                        <button class="btn btn-primary">Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

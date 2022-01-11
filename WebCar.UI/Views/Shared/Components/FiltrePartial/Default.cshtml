@@ -1,0 +1,98 @@
+﻿@{ var viewModel = new EntityLayer.Entity.Advert();}
+
+
+<div class="col-md-8">
+    <br />
+    FİLTRELEME
+    @using (Html.BeginForm("Filtre", "Home", FormMethod.Get, new { @class = "row" }))
+    {
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">En Az</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="min" placeholder="En Az(Fiyat)">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">En Çok</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="max" placeholder="En Çok(Fiyat)">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">Şehir</label>
+            <div class="col-sm-8">
+
+
+             
+                @Html.DropDownListFor(item =>viewModel.CityId, (List<SelectListItem>)ViewBag.cities, "Seçiniz", new { @class = "form-control" })
+
+
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">Durum</label>
+            <div class="col-sm-8">
+                
+                @Html.DropDownListFor(item => viewModel.StateId, (List<SelectListItem>)ViewBag.states, "Seçiniz", new { @class = "form-control" })
+
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">Marka</label>
+            <div class="col-sm-8">
+
+              
+
+                @Html.DropDownListFor(m => viewModel.BrandId, (List<SelectListItem>)ViewBag.brand, "Marka Seç", new { @id = "BranddId", @class = "form-control" })
+
+                @*@Html.DropDownListFor(item => viewModel.Advert.BrandId, (List<SelectListItem>)ViewBag.brand, "Seçiniz", new { @id = "BrandId", @class = "form-control" })*@
+
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">Model</label>
+            <div class="col-sm-8">
+
+
+                @Html.DropDownListFor(m=>viewModel.ModelId, new SelectList(""), "Model Seç", new { @id = "ModelId", @class = "form-control" })
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label"></label>
+
+            <div class="col-sm-8">
+                <button type="submit" class="btn btn-outline-primary col-12"><i class="bi bi-search"></i> FİLTRELE</button>
+            </div>
+
+        </div>
+
+    }
+
+
+
+</div>
+@*<script src="~/car/vendor/jquery/jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $("#BrandId").change(function () {
+            var markaid = $(this).val();
+            debugger
+            $.ajax({
+                Type: "Post",
+                url: "/Home/ModelGet?BrandId=" + markaid,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#ModelId").empty();
+                    $("#ModelId").append(response);
+                }
+            })
+        })
+    })
+</script>*@

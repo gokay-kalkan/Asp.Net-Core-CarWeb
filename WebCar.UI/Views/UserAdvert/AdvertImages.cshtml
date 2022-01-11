@@ -1,0 +1,26 @@
+﻿@model List<Image>
+@{
+    ViewData["Title"] = "AdvertImages";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="card-header">
+                    <h2>Resimler</h2>
+                </div>
+                <div class="card-body">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4">
+                            <img src="~/img/@item.ImageName" width="80" height="80"/>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

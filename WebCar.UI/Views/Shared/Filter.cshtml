@@ -1,0 +1,93 @@
+﻿
+@{ var x = new Advert();}
+
+<div class="col-md-8">
+    <br />
+    FİLTRELEME
+    @using (Html.BeginForm("Filtre", "Home", FormMethod.Get, new { @class = "row" }))
+    {
+
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">En Az</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="min" placeholder="En Az(Fiyat)">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">En Çok</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="max" placeholder="En Çok(Fiyat)">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">Şehir</label>
+            <div class="col-sm-8">
+
+
+
+                @Html.DropDownListFor(item => x.CityId, (IEnumerable<SelectListItem>)ViewBag.cities, htmlAttributes: new { @class = "form-control" })
+
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">Durum</label>
+            <div class="col-sm-8">
+
+
+                @Html.DropDownListFor(item => x.StateId, (IEnumerable<SelectListItem>)ViewBag.states, htmlAttributes: new { @class = "form-control" })
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">Marka</label>
+            <div class="col-sm-8">
+
+
+                @Html.DropDownListFor(item => x.BrandId, (IEnumerable<SelectListItem>)ViewBag.brand, htmlAttributes: new { @class = "form-control" })
+
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label">Model</label>
+            <div class="col-sm-8">
+
+
+                @Html.DropDownListFor(item => x.ModelId, new SelectList(""), "Model Seç", htmlAttributes: new { @class = "form-control" })
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+                <button type="submit" class="btn btn-outline-primary col-12"><i class="bi bi-search"></i> FİLTRELE</button>
+            </div>
+        </div>
+
+
+
+    }
+
+</div>
+<script src="~/NiceAdmin/js/jquery-1.8.3.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#BrandId").change(function () {
+            var markaid = $(this).val();
+            debugger
+            $.ajax({
+                Type: "Post",
+                url: "/Home/ModelGet?BrandId=" + markaid,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#ModelId").empty();
+                    $("#ModelId").append(response);
+                }
+            })
+        })
+    })
+</script>

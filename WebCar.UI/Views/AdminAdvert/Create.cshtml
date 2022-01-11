@@ -1,0 +1,101 @@
+﻿@model Advert
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="form-group">
+                    <form method="post" asp-action="Create" enctype="multipart/form-data">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" value="@ViewBag.userid" asp-for="UserAdminId" />
+                        <label>Resimler</label>
+                        <input type="file" multiple asp-for="Image" />
+
+                        <br />
+
+                        <label>İlan No</label>
+                        <input type="text" asp-for="AdvertNo" class="form-control" />
+                        <span asp-validation-for="AdvertNo" class="text-danger"></span>
+                        <br />
+                        <label>Açıklama</label>
+                        <input type="text" asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                        <br />
+                        <label>Fiyat</label>
+                        <input type="text" asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                        <br />
+                        <label>Kilometre</label>
+                        <input type="text" asp-for="Kilometer" class="form-control" />
+                        <span asp-validation-for="Kilometer" class="text-danger"></span>
+                        <br />
+                        <label>Model Yılı</label>
+                        <input type="text" asp-for="ModelYear" class="form-control" />
+                        <span asp-validation-for="ModelYear" class="text-danger"></span>
+                        <br />
+                        <label>Yakıt Türü</label>
+                        <input type="text" asp-for="FuelType" class="form-control" />
+                        <span asp-validation-for="FuelType" class="text-danger"></span>
+                        <br />
+                        <label>Vites Türü</label>
+                        <input type="text" asp-for="VitesType" class="form-control" />
+                        <span asp-validation-for="VitesType" class="text-danger"></span>
+                        <br />
+                        <label>Telefon</label>
+                        <input type="text" asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                        <br />
+                        <label>Durum</label>
+                        @Html.DropDownListFor(x => x.StateId, (List<SelectListItem>)ViewBag.states, "Seçiniz", new { @class = "form-control" })
+                        <span asp-validation-for="StateId" class="text-danger"></span>
+                        <br />
+                        <label>Marka</label>
+                        @Html.DropDownListFor(x => x.BrandId, (List<SelectListItem>)ViewBag.brand, "Seçiniz", new { @class = "form-control" })
+                        <span asp-validation-for="BrandId" class="text-danger"></span>
+                        <br />
+                        <label>Model</label>
+                        @Html.DropDownListFor(m => m.ModelId, new SelectList(""), "Model Seç", new { @class = "form-control" })
+                        <span asp-validation-for="ModelId" class="text-danger"></span>
+                        <br />
+                        <label>Şehir</label>
+                        @Html.DropDownListFor(x => x.CityId, (List<SelectListItem>)ViewBag.cities, "Seçiniz", new { @class = "form-control" })
+                        <span asp-validation-for="CityId" class="text-danger"></span>
+                        <button class="btn btn-primary">Ekle</button>
+                        <br /><br />
+                        <a asp-action="Index" class="btn btn-outline-warning"><i class="bi bi-file-earmark"></i>İlan Listesi</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/NiceAdmin/js/jquery-1.8.3.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#BrandId").change(function () {
+            var markaid = $(this).val();
+            debugger
+            $.ajax({
+                Type: "Post",
+                url: "/AdminAdvert/ModelGet?BrandId=" + markaid,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#ModelId").empty();
+                    $("#ModelId").append(response);
+                }
+            })
+        })
+    })
+</script>
+

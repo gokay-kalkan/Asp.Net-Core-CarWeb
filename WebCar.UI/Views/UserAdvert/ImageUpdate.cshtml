@@ -1,0 +1,26 @@
+﻿@model Image
+@{
+    ViewData["Title"] = "ImageUpdate";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<div class="container">
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="form-group">
+                    <form method="post" asp-action="ImageUpdate">
+                        @foreach (var item in Model.ImageName)
+                        {
+                            <div>
+                                <img src="~/img/@item" width="70" height="70"/>
+                                <button type="submit" class="btn btn-warning">Güncelle</button>
+                            </div>
+                        }
+                        </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

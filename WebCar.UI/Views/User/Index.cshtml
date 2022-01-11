@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Session
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-8">
+                <div class="jumbotron">
+                    <h3>@Context.Session.GetString("FullName") Kullanıcı Panele Hoş Geldiniz.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+

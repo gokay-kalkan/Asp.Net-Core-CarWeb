@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Araba İlan Sitesi</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/car/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="~/car/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/car/assets/css/style.css">
+    <link rel="stylesheet" href="~/car/assets/css/owl.css">
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+    <!-- Header -->
+    <header class="">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html"><h2>Araba İlanları <em>Web sitesi</em></h2></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-controller="Car" asp-action="OnSale">
+                                Satılık
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" asp-controller="Car" asp-action="OnRent">Kiralık</a></li>
+                        
+                      
+
+
+
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index">Admin Paneli</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="LogOut">Çıkış</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="AdminAdvert" asp-action="Create">İlan Ver</a></li>
+                            }
+                            else
+                            {
+                                <li class="nav-item"><a class="nav-link" asp-controller="User" asp-action="Index">Panelim</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="LogOut">Çıkış</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Advert" asp-action="Create">İlan Ver</a></li>
+                            }
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Register">Üye Ol</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login">Giriş</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="UserAdvert" asp-action="Create">İlan Ver</a></li>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner header-text">
+        <div class="owl-banner owl-carousel">
+            <div class="banner-item-01">
+                <div class="text-content">
+                    
+                </div>
+            </div>
+            <div class="banner-item-02">
+                <div class="text-content">
+                   
+                </div>
+            </div>
+            <div class="banner-item-03">
+                <div class="text-content">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    @*<div class="best-features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>About Us</h2>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="left-content">
+                        <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Explicabo, esse consequatur alias repellat in excepturi inventore ad <a href="#">asperiores</a> tempora ipsa. Accusantium tenetur voluptate labore aperiam molestiae rerum excepturi minus in pariatur praesentium, corporis, aliquid dicta.</p>
+                        <ul class="featured-list">
+                            <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                            <li><a href="#">Consectetur an adipisicing elit</a></li>
+                            <li><a href="#">It aquecorporis nulla aspernatur</a></li>
+                            <li><a href="#">Corporis, omnis doloremque</a></li>
+                        </ul>
+                        <a href="about-us.html" class="filled-button">Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="right-image">
+                        <img src="~/car/assets/images/about-1-570x350.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+    @*<div class="services" style="background-image: url(~/car/assets/images/other-image-fullscren-1-1920x900.jpg);">
+      
+    </div>*@
+
+    
+
+
+    
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="inner-content">
+                        <p>Copyright © 2021 Company Name - Template by: <a href="https://www.phpjabbers.com/">Gökay KALKAN</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/car/vendor/jquery/jquery.min.js"></script>
+    @*<script src="~/car/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+
+
+    <!-- Additional Scripts -->
+    <script src="~/car/assets/js/custom.js"></script>
+    <script src="~/car/assets/js/owl.js"></script>
+</body>
+</html>

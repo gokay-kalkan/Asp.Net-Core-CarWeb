@@ -1,0 +1,10 @@
+﻿
+<option value="">Model Seç</option>
+@if (ViewBag.model != null)
+{
+    foreach (var item in ViewBag.model)
+    {
+       <option value="@item.Value">@item.Text</option>
+    }
+
+}

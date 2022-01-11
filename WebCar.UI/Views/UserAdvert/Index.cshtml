@@ -1,0 +1,41 @@
+﻿@model List<Advert>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<table class="table  table-bordered table table-striped">
+    <tr>
+        <th>Marka</th>
+        <th>Model</th>
+        <th>Durum</th>
+        <th>Şehir</th>
+        <th>Fiyat</th>
+        <th>Resimler</th>
+        <th>Resimler Ekle</th>
+        <th>Güncelle</th>
+      
+        <th>Sil</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Model.Brand.Name</td>
+            <td>@item.Model.Name</td>
+            <td>@item.State.Name</td>
+            <td>@item.City.Name</td>
+            <td>@item.Price</td>
+            <td><a class="btn btn-secondary" asp-action="AdvertImages" asp-route-id="@item.Id">Resimler</a></td>
+            <td><a class="btn btn-secondary" asp-action="ImageCreate" asp-route-id="@item.Id">Resimler Ekle</a></td>
+            <td><a class="btn btn-warning" asp-action="Update" asp-route-id="@item.Id">Güncelle</a></td>
+          
+            <td>@Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor musunuz?')" })</td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+<br />
+<a class="btn btn-primary" asp-action="Create">İlan Ekle</a>
+
